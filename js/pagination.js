@@ -31,12 +31,21 @@ const updatePageSelect = (totalPages, currentPage) => {
 };
 
 export const updatePaginationControls = (currentPage, totalPages) => {
-  pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
+  const hasResults = totalPages > 0;
+  const displayedPage = hasResults ? currentPage : 0;
 
-  firstPageButton.disabled = currentPage === 1;
-  previousPageButton.disabled = currentPage === 1;
-  nextPageButton.disabled = currentPage === totalPages;
-  lastPageButton.disabled = currentPage === totalPages;
+  pageIndicator.textContent = `Page ${displayedPage} of ${totalPages}`;
+
+  firstPageButton.disabled = !hasResults || currentPage === 1;
+  previousPageButton.disabled = !hasResults || currentPage === 1;
+  nextPageButton.disabled = !hasResults || currentPage === totalPages;
+  lastPageButton.disabled = !hasResults || currentPage === totalPages;
+  pageSelect.disabled = !hasResults;
+
+  if (!hasResults) {
+    pageSelect.innerHTML = `<option value="">0</option>`;
+    return;
+  }
 
   updatePageSelect(totalPages, currentPage);
 };
