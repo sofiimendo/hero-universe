@@ -1,0 +1,9 @@
+@use "../abstracts/variables" as variables;
+
+.site-footer {
+  padding: 2rem 1rem;
+  border-top: 1px solid variables.$color-border;
+  color: variables.$color-text-secondary;
+  text-align: center;
+  font-size: 0.85rem;
+}

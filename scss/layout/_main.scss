@@ -1,0 +1,76 @@
+@use "../abstracts/mixins" as mixins;
+@use "../abstracts/variables" as variables;
+
+.main-content {
+  @include mixins.container;
+
+  padding-block: 2rem 4rem;
+}
+
+.hero-intro {
+  max-width: 760px;
+  margin-bottom: 2rem;
+
+  &__eyebrow {
+    margin-bottom: 0.5rem;
+    color: variables.$color-secondary;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__title {
+    margin-bottom: 0.75rem;
+    font-size: clamp(2rem, 7vw, 4.5rem);
+  }
+
+  &__description {
+    color: variables.$color-text-secondary;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+  }
+}
+
+.results-section {
+  margin-top: 2rem;
+}
+
+.results-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+
+  &__label {
+    color: variables.$color-secondary;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  @include mixins.tablet {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.results-count {
+  color: variables.$color-text-secondary;
+}
+
+.heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+
+  @include mixins.tablet {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1.5rem;
+  }
+}

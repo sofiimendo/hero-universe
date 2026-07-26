@@ -1,0 +1,18 @@
+@use "../abstracts/variables" as variables;
+
+body {
+  font-family: variables.$font-primary;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}

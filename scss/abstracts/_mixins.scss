@@ -1,0 +1,29 @@
+@use "./variables" as variables;
+
+@mixin container {
+  width: min(100% - 2rem, variables.$container-width);
+  margin-inline: auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin focus-ring {
+  outline: 3px solid rgba(108, 99, 255, 0.35);
+  outline-offset: 2px;
+}
+
+@mixin tablet {
+  @media (min-width: variables.$breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: variables.$breakpoint-desktop) {
+    @content;
+  }
+}
