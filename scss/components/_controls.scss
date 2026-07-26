@@ -1,0 +1,93 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+.controls {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid variables.$color-border;
+  border-radius: variables.$border-radius-large;
+  background: rgba(21, 24, 39, 0.8);
+  box-shadow: 0 1rem 2.5rem variables.$color-shadow;
+  backdrop-filter: blur(12px);
+
+  @include mixins.tablet {
+    grid-template-columns: 2fr repeat(3, 1fr);
+    align-items: end;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__label {
+    color: variables.$color-text-secondary;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+}
+
+.input,
+.select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.75rem 1rem;
+  border: 1px solid variables.$color-border;
+  border-radius: variables.$border-radius-small;
+  background: variables.$color-surface-light;
+  color: variables.$color-text-primary;
+  transition:
+    border-color variables.$transition-fast,
+    background-color variables.$transition-fast,
+    box-shadow variables.$transition-fast;
+
+  &::placeholder {
+    color: variables.$color-text-secondary;
+  }
+
+  &:hover {
+    border-color: rgba(139, 132, 255, 0.5);
+  }
+
+  &:focus {
+    border-color: variables.$color-primary-light;
+    background: variables.$color-surface;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.18);
+  }
+}
+
+.select {
+  cursor: pointer;
+}
+
+.search-field {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    color: variables.$color-text-secondary;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+
+  .input {
+    padding-left: 2.75rem;
+  }
+}
+
+.controls-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  @include mixins.tablet {
+    justify-content: flex-end;
+  }
+}

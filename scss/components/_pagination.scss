@@ -1,0 +1,42 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 2.5rem;
+
+  &__pages {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    min-width: 42px;
+    height: 42px;
+    border: 1px solid variables.$color-border;
+    border-radius: variables.$border-radius-small;
+    background: variables.$color-surface-light;
+    color: variables.$color-text-primary;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+      background: variables.$color-primary;
+    }
+
+    &--active {
+      background: variables.$color-primary;
+      border-color: variables.$color-primary;
+    }
+
+    &:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
+  }
+}
