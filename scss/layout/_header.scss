@@ -1,0 +1,48 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 0;
+  background: rgba(13, 15, 26, 0.88);
+  border-bottom: 1px solid variables.$color-border;
+  backdrop-filter: blur(14px);
+
+  &__content {
+    @include mixins.container;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  &__icon {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 0.5rem variables.$color-primary);
+  }
+
+  &__title {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    background: linear-gradient(
+      135deg,
+      variables.$color-primary-light,
+      variables.$color-secondary
+    );
+    background-clip: text;
+    color: transparent;
+  }
+
+  &__subtitle {
+    color: variables.$color-text-secondary;
+    font-size: 0.8rem;
+  }
+}

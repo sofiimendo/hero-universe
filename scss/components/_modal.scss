@@ -1,0 +1,32 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(0,0,0,.75);
+  z-index: 999;
+
+  &.is-open {
+    display: flex;
+  }
+
+  &__content {
+    width: min(900px,100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: variables.$border-radius-large;
+    background: variables.$color-surface;
+    box-shadow: 0 2rem 4rem rgba(0,0,0,.45);
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}

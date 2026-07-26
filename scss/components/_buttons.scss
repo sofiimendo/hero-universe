@@ -1,0 +1,70 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+.button {
+  @include mixins.flex-center;
+
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: variables.$border-radius-small;
+  background: variables.$color-primary;
+  color: variables.$color-text-primary;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color variables.$transition-fast,
+    border-color variables.$transition-fast,
+    color variables.$transition-fast,
+    transform variables.$transition-fast,
+    opacity variables.$transition-fast;
+
+  &:hover {
+    background: variables.$color-primary-light;
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    @include mixins.focus-ring;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  &--secondary {
+    border-color: variables.$color-border;
+    background: variables.$color-surface-light;
+    color: variables.$color-text-primary;
+
+    &:hover {
+      border-color: variables.$color-primary-light;
+      background: variables.$color-surface;
+    }
+  }
+
+  &--ghost {
+    border-color: variables.$color-border;
+    background: transparent;
+    color: variables.$color-text-secondary;
+
+    &:hover {
+      border-color: variables.$color-primary;
+      background: rgba(108, 99, 255, 0.1);
+      color: variables.$color-text-primary;
+    }
+  }
+
+  &--icon {
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+    border-radius: 50%;
+  }
+}

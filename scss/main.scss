@@ -1,2 +1,17 @@
+@use "./abstracts/variables";
+@use "./abstracts/mixins";
+
 @use "./base/reset";
+@use "./base/typography";
 @use "./base/global";
+
+@use "./layout/header";
+@use "./layout/main";
+@use "./layout/footer";
+
+@use "./components/buttons";
+@use "./components/controls";
+@use "./components/hero-card";
+@use "./components/loader";
+@use "./components/modal";
+@use "./components/pagination";
