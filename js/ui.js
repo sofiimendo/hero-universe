@@ -67,5 +67,5 @@ export const renderHeroes = (heroes) => {
 export const updateResultsCount = (totalHeroes) => {
   const resultText = totalHeroes === 1 ? "result" : "results";
 
-  resultsCount.textContent = `${totalHeroes} ${resultText}`;
+  resultsCount.textContent = ${totalHeroes} ${resultText};
 };
