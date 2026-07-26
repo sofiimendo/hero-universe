@@ -21,6 +21,11 @@ const renderCurrentPage = () => {
 
   renderHeroes(heroesToRender);
   updatePaginationControls(currentPage, totalPages);
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 };
 
 const goToFirstPage = () => {
