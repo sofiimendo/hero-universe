@@ -1,3 +1,4 @@
+import { initializeTheme } from "./theme.js";
 import { fetchHeroes } from "./api.js";
 import { HEROES_PER_PAGE } from "./constants.js";
 import {
@@ -100,4 +101,7 @@ const initializeApp = async () => {
   }
 };
 
-document.addEventListener("DOMContentLoaded", initializeApp);
+document.addEventListener("DOMContentLoaded", () => {
+  initializeTheme();
+  initializeApp();
+});
