@@ -3,124 +3,253 @@
 
 .hero-card {
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  height: 100%;
+
   overflow: hidden;
-  border: 1px solid variables.$color-border;
+
+  background-color: variables.$color-surface;
+  border: 1px solid rgba(53, 90, 81, 0.45);
   border-radius: variables.$border-radius-large;
-  background: variables.$color-surface;
-  box-shadow: 0 1rem 2rem variables.$color-shadow;
-  cursor: pointer;
+
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+
+  transform: translateY(0) scale(1);
+
   transition:
-    transform variables.$transition-normal,
-    border-color variables.$transition-normal,
-    box-shadow variables.$transition-normal;
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 
-  &:hover {
-    border-color: rgba(139, 132, 255, 0.55);
-    box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.48);
-    transform: translateY(-6px);
+  animation: card-entrance 0.55s ease both;
 
-    .hero-card__image {
-      transform: scale(1.06);
-    }
+  &::before {
+    content: "";
 
-    .hero-card__overlay {
-      opacity: 1;
-    }
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    border-radius: inherit;
+
+    box-shadow: inset 0 0 0 1px rgba(142, 214, 201, 0);
+
+    pointer-events: none;
+
+    transition: box-shadow 0.35s ease;
   }
 
-  &:focus-visible {
-    @include mixins.focus-ring;
+&:hover {
+  z-index: 3;
+
+  border-color: rgba(45, 90, 76, 0.85);
+
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.50),
+    0 4px 10px rgba(18, 52, 45, 0.40);
+
+  transform: translateY(-10px) scale(1.02);
+
+  &::before {
+    box-shadow: inset 0 0 0 1px rgba(55, 105, 90, 0.28);
   }
 
-  &__image-wrapper {
+  .hero-card__image {
+    transform: scale(1.06);
+  }
+}
+  &:focus-within {
+    border-color: variables.$color-secondary;
+
+    box-shadow: 0 0 0 3px rgba(142, 214, 201, 0.2);
+  }
+
+  &__image-container {
     position: relative;
+
+    width: 100%;
     aspect-ratio: 3 / 4;
+
     overflow: hidden;
-    background: variables.$color-surface-light;
+
+    background-color: variables.$color-surface-light;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      inset: auto 0 0;
+
+      height: 22%;
+
+      background: linear-gradient(
+        to top,
+        rgba(21, 24, 39, 0.55),
+        transparent
+      );
+
+      pointer-events: none;
+    }
   }
 
   &__image {
+    display: block;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
-    transition: transform variables.$transition-normal;
-  }
+    object-position: top;
 
-  &__overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-    background: linear-gradient(
-      to top,
-      rgba(13, 15, 26, 0.95),
-      rgba(13, 15, 26, 0.1) 60%
-    );
-    opacity: 0;
-    transition: opacity variables.$transition-normal;
-  }
-
-  &__view-text {
-    color: variables.$color-text-primary;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    transition: transform 0.5s ease;
   }
 
   &__content {
-    padding: 1rem;
-  }
-
-  &__name {
-    margin-bottom: 0.35rem;
-    font-size: 1.1rem;
-  }
-
-  &__full-name {
-    min-height: 1.3rem;
-    color: variables.$color-text-secondary;
-    font-size: 0.85rem;
-  }
-
-  &__meta {
     display: flex;
+    flex: 1;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-top: 0.9rem;
+
+    padding: 0.85rem 1rem 1rem;
+
+    text-align: center;
   }
 
   &__publisher {
+    width: 100%;
+
+    margin: 0;
+
     overflow: hidden;
+
     color: variables.$color-text-secondary;
     font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+
+    text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
+  &__name {
+    width: 100%;
+
+    margin: 0.3rem 0 0;
+
+    color: variables.$color-text-primary;
+
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.15;
+
+    text-align: center;
+  }
+
   &__alignment {
-    flex-shrink: 0;
-    padding: 0.25rem 0.55rem;
-    border-radius: 999px;
-    font-size: 0.7rem;
+    width: 100%;
+
+    margin: 0.45rem 0 0.7rem;
+
+    color: variables.$color-text-secondary;
+
+    font-size: 0.78rem;
     font-weight: 700;
+    line-height: 1.15;
+
+    text-align: center;
     text-transform: capitalize;
+  }
 
-    &--good {
-      background: rgba(34, 197, 94, 0.14);
-      color: variables.$color-success;
+  &__button {
+    width: 100%;
+
+    margin-top: 0;
+    padding: 0.75rem 1rem;
+
+    color: variables.$color-text-primary;
+    font-weight: 800;
+    text-align: center;
+
+    background: linear-gradient(
+      135deg,
+      variables.$color-primary,
+      variables.$color-primary-light
+    );
+
+    border: 0;
+    border-radius: variables.$border-radius-small;
+
+    cursor: pointer;
+
+    transition:
+      transform variables.$transition-fast,
+      box-shadow variables.$transition-fast,
+      filter variables.$transition-fast;
+
+&:hover {
+  filter: brightness(1.02);
+
+  box-shadow:
+    0 4px 8px rgba(10, 5, 40, 0.85);
+
+  transform: translateY(-2px);
+}
+    &:active {
+      transform: translateY(0) scale(0.98);
     }
 
-    &--bad {
-      background: rgba(239, 68, 68, 0.14);
-      color: variables.$color-danger;
+    &:focus-visible {
+      @include mixins.focus-ring;
+    }
+  }
+}
+
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-card {
+    width: min(100%, 330px);
+    margin-inline: auto;
+
+    &:hover {
+      transform: translateY(-6px);
     }
 
-    &--neutral {
-      background: rgba(245, 158, 11, 0.14);
-      color: variables.$color-warning;
+    &__content {
+      padding: 0.85rem 1rem 1rem;
+    }
+
+    &__name {
+      font-size: 1.15rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card {
+    animation: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &__image {
+      transition: none;
     }
   }
 }

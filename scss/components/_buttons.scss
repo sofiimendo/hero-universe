@@ -5,22 +5,33 @@
   @include mixins.flex-center;
 
   min-height: 44px;
+
   padding: 0.75rem 1.25rem;
+
   border: 1px solid transparent;
   border-radius: variables.$border-radius-small;
+
   background: variables.$color-primary;
   color: variables.$color-text-primary;
+
   font-weight: 700;
+  text-align: center;
+
   cursor: pointer;
+
   transition:
     background-color variables.$transition-fast,
     border-color variables.$transition-fast,
     color variables.$transition-fast,
+    box-shadow variables.$transition-fast,
     transform variables.$transition-fast,
     opacity variables.$transition-fast;
 
   &:hover {
     background: variables.$color-primary-light;
+
+    box-shadow: 0 0.6rem 1.5rem rgba(108, 99, 255, 0.25);
+
     transform: translateY(-2px);
   }
 
@@ -29,17 +40,21 @@
   }
 
   &:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
   }
 
   &:disabled {
     opacity: 0.45;
+
     cursor: not-allowed;
+
+    box-shadow: none;
     transform: none;
   }
 
   &--secondary {
     border-color: variables.$color-border;
+
     background: variables.$color-surface-light;
     color: variables.$color-text-primary;
 
@@ -51,11 +66,13 @@
 
   &--ghost {
     border-color: variables.$color-border;
+
     background: transparent;
     color: variables.$color-text-secondary;
 
     &:hover {
       border-color: variables.$color-primary;
+
       background: rgba(108, 99, 255, 0.1);
       color: variables.$color-text-primary;
     }
@@ -64,7 +81,126 @@
   &--icon {
     width: 44px;
     min-width: 44px;
+
     padding: 0;
+
     border-radius: 50%;
+  }
+}
+
+.theme-toggle {
+  @include mixins.flex-center;
+
+  width: 46px;
+  height: 46px;
+
+  padding: 0;
+
+  color: variables.$color-page-text;
+  font-size: 1.45rem;
+
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  box-shadow: none;
+  appearance: none;
+
+  span {
+    display: block;
+
+    line-height: 1;
+
+    filter: drop-shadow(0 0.2rem 0.3rem rgba(0, 0, 0, 0.25));
+
+    transition:
+      transform variables.$transition-normal,
+      filter variables.$transition-normal;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+
+    transform: rotate(-10deg) scale(1.08);
+
+    span {
+      filter: drop-shadow(0 0.35rem 0.5rem rgba(0, 0, 0, 0.35));
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(142, 214, 201, 0.45);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+}
+
+.clear-filters-button {
+  min-height: 46px;
+
+  padding: 0.75rem 1.25rem;
+
+  color: variables.$color-text-primary;
+  font-weight: 700;
+  text-align: center;
+
+  background-color: variables.$color-surface;
+  border: 1px solid variables.$color-border;
+  border-radius: variables.$border-radius-small;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: variables.$color-primary;
+    border-color: variables.$color-primary;
+
+    box-shadow: 0 0.6rem 1.4rem rgba(108, 99, 255, 0.25);
+
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.hero-card__button {
+  width: 100%;
+
+  margin-top: 0.85rem;
+  padding: 0.7rem 1rem;
+
+  color: variables.$color-text-primary;
+  font-weight: 700;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    variables.$color-primary,
+    variables.$color-primary-light
+  );
+
+  border: 0;
+  border-radius: variables.$border-radius-small;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0.65rem 1.5rem rgba(108, 99, 255, 0.32);
+
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  &:focus-visible {
+    @include mixins.focus-ring;
   }
 }

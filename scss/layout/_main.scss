@@ -4,73 +4,170 @@
 .main-content {
   @include mixins.container;
 
-  padding-block: 2rem 4rem;
+  padding-block: 3rem 4rem;
 }
 
 .hero-intro {
-  max-width: 760px;
-  margin-bottom: 2rem;
+  width: min(100%, 920px);
+
+  margin: 0 auto 3rem;
+
+  text-align: center;
+
+  animation: intro-entrance 0.75s ease both;
 
   &__eyebrow {
-    margin-bottom: 0.5rem;
-    color: variables.$color-secondary;
+    margin-bottom: 0.75rem;
+
+    color: var(--color-secondary);
+
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 800;
+
+    text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
   }
 
   &__title {
-    margin-bottom: 0.75rem;
-    font-size: clamp(2rem, 7vw, 4.5rem);
+    max-width: 900px;
+
+    margin: 0 auto 1rem;
+
+    color: var(--color-text-primary);
+
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.05;
+
+    text-align: center;
+    text-wrap: balance;
   }
 
   &__description {
-    color: variables.$color-text-secondary;
+    max-width: 680px;
+
+    margin-inline: auto;
+
+    color: var(--color-text-secondary);
+
     font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.7;
+
+    text-align: center;
+    text-wrap: balance;
   }
 }
 
 .results-section {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .results-header {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
+
+  margin-bottom: 2rem;
+
+  text-align: center;
 
   &__label {
-    color: variables.$color-secondary;
+    color: var(--color-secondary);
+
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
+
+    text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
   }
 
   &__title {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-  }
+    color: var(--color-text-primary);
 
-  @include mixins.tablet {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+
+    text-align: center;
   }
 }
 
 .results-count {
-  color: variables.$color-text-secondary;
+  padding: 0.45rem 0.9rem;
+
+  color: var(--color-text-primary);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  text-align: center;
+
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    color variables.$transition-normal,
+    background-color variables.$transition-normal,
+    border-color variables.$transition-normal;
 }
 
 .heroes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+
+  gap: 1.25rem;
+
+  align-items: stretch;
 
   @include mixins.tablet {
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 1.5rem;
+  }
+
+  @include mixins.desktop {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+
+  padding: 3rem 1rem;
+
+  color: var(--color-text-primary);
+
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+body.light-theme {
+  .results-count {
+    background-color: rgba(23, 51, 48, 0.07);
+    border-color: rgba(23, 51, 48, 0.18);
+  }
+}
+
+@keyframes intro-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-intro {
+    animation: none;
   }
 }

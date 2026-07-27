@@ -3,130 +3,233 @@
 
 .controls {
   display: grid;
-  gap: 1rem;
-  padding: 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: variables.$border-radius-large;
-  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
-  box-shadow: 0 1rem 2.5rem var(--color-shadow);
-  backdrop-filter: blur(12px);
+  gap: 1.25rem;
+
+  width: 100%;
+  margin-inline: auto;
+  padding: 1.25rem;
+
+  background: rgba(2, 40, 39, 0.78);
+  border: 1px solid rgba(142, 214, 201, 0.18);
+
+  box-shadow:
+    0 1rem 2.5rem rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(16px);
+
+  animation: controls-entrance 0.75s ease 0.12s both;
 
   @include mixins.tablet {
-    grid-template-columns: minmax(220px, 2fr) minmax(0, 3fr);
+    padding: 1.5rem;
+  }
+
+  @include mixins.desktop {
+    grid-template-columns: minmax(260px, 1.5fr) minmax(0, 3.5fr);
     align-items: end;
+
+    gap: 1rem;
   }
 }
 
 .search-field {
   position: relative;
 
+  width: 100%;
+
   &__icon {
     position: absolute;
     top: 50%;
     left: 1rem;
-    color: var(--color-text-secondary);
+
+    z-index: 1;
+
+    color: variables.$color-text-secondary;
+    font-size: 1rem;
+
     pointer-events: none;
+
     transform: translateY(-50%);
   }
 
   &__input {
     width: 100%;
-    min-height: 46px;
-    padding: 0.75rem 1rem 0.75rem 2.75rem;
-    border: 1px solid var(--color-border);
+    min-height: 48px;
+
+    padding: 0.75rem 1rem 0.75rem 2.8rem;
+
+    color: variables.$color-text-primary;
+    font-size: 0.95rem;
+
+    background-color: variables.$color-surface-light;
+    border: 1px solid variables.$color-border;
     border-radius: variables.$border-radius-small;
-    background: var(--color-surface-light);
-    color: var(--color-text-primary);
-    transition:
-      border-color variables.$transition-fast,
-      background-color variables.$transition-fast,
-      box-shadow variables.$transition-fast;
+
+    outline: none;
 
     &::placeholder {
-      color: var(--color-text-secondary);
+      color: variables.$color-text-secondary;
     }
 
     &:hover {
-      border-color: rgba(139, 132, 255, 0.5);
+      border-color: rgba(142, 214, 201, 0.55);
     }
 
     &:focus {
-      border-color: var(--color-primary-light);
-      background: var(--color-surface);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.18);
+      background-color: variables.$color-surface;
+      border-color: variables.$color-secondary;
+
+      box-shadow: 0 0 0 3px rgba(142, 214, 201, 0.16);
     }
   }
 }
 
 .filters {
   display: grid;
-  gap: 0.75rem;
+  grid-template-columns: 1fr;
+
+  gap: 1rem;
+
+  width: 100%;
 
   @include mixins.tablet {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mixins.desktop {
+    grid-template-columns:
+      repeat(4, minmax(125px, 1fr))
+      minmax(135px, 0.8fr);
+
     align-items: end;
+
+    gap: 0.75rem;
   }
 }
 
 .filter-group {
   display: flex;
   flex-direction: column;
+
   gap: 0.5rem;
 
+  min-width: 0;
+
   label {
-    color: var(--color-text-secondary);
-    font-size: 0.8rem;
-    font-weight: 700;
+    color: variables.$color-text-secondary;
+
+    font-size: 0.75rem;
+    font-weight: 800;
+
+    text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
   }
 }
 
 .filter-select {
   width: 100%;
-  min-height: 46px;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
+  min-height: 48px;
+
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+
+  color: variables.$color-text-primary;
+  font-size: 0.9rem;
+
+  background-color: variables.$color-surface-light;
+  border: 1px solid variables.$color-border;
   border-radius: variables.$border-radius-small;
-  background: var(--color-surface-light);
-  color: var(--color-text-primary);
+
   cursor: pointer;
-  transition:
-    border-color variables.$transition-fast,
-    background-color variables.$transition-fast,
-    box-shadow variables.$transition-fast;
+  outline: none;
 
   &:hover {
-    border-color: rgba(139, 132, 255, 0.5);
+    border-color: rgba(142, 214, 201, 0.55);
   }
 
   &:focus {
-    border-color: var(--color-primary-light);
-    background: var(--color-surface);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.18);
+    background-color: variables.$color-surface;
+    border-color: variables.$color-secondary;
+
+    box-shadow: 0 0 0 3px rgba(142, 214, 201, 0.16);
+  }
+
+  option {
+    color: variables.$color-text-primary;
+    background-color: variables.$color-surface;
   }
 }
 
 .clear-filters-button {
   width: 100%;
-  min-height: 46px;
+  min-height: 48px;
+
   padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: variables.$border-radius-small;
-  background: transparent;
-  color: var(--color-text-primary);
+
+  color: variables.$color-text-primary;
   font-weight: 700;
+  text-align: center;
+
+  background-color: transparent;
+  border: 1px solid rgba(142, 214, 201, 0.35);
+  border-radius: variables.$border-radius-small;
+
   cursor: pointer;
-  transition:
-    border-color variables.$transition-fast,
-    background-color variables.$transition-fast,
-    color variables.$transition-fast;
 
   &:hover {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: #ffffff;
+    color: #062f30;
+
+    background-color: variables.$color-secondary;
+    border-color: variables.$color-secondary;
+
+    box-shadow: 0 0.6rem 1.3rem rgba(0, 0, 0, 0.2);
+
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(142, 214, 201, 0.35);
+    outline-offset: 3px;
+  }
+
+  @include mixins.tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include mixins.desktop {
+    grid-column: auto;
+  }
+}
+
+body.light-theme {
+  .controls {
+    background: rgba(2, 40, 39, 0.9);
+    border-color: rgba(142, 214, 201, 0.22);
+
+    box-shadow:
+      0 1rem 2.5rem rgba(15, 39, 36, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  }
+}
+
+@keyframes controls-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .controls {
+    animation: none;
   }
 }

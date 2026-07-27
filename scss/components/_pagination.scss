@@ -3,40 +3,282 @@
 
 .pagination {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: .75rem;
-  margin-top: 2.5rem;
 
-  &__pages {
-    display: flex;
-    gap: .5rem;
-    flex-wrap: wrap;
-  }
+  gap: 0.75rem;
+
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+
+  margin: 3rem auto 0;
+  padding: 1rem 0;
+
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
 
   &__button {
-    min-width: 42px;
-    height: 42px;
-    border: 1px solid variables.$color-border;
-    border-radius: variables.$border-radius-small;
-    background: variables.$color-surface-light;
-    color: variables.$color-text-primary;
-    cursor: pointer;
-    transition: .2s;
+    min-width: 92px;
+    min-height: 46px;
 
-    &:hover {
-      background: variables.$color-primary;
+    padding: 0.7rem 1rem;
+
+    color: variables.$color-text-primary;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-align: center;
+
+    background-color: rgba(142, 214, 201, 0.1);
+    border: 1px solid rgba(142, 214, 201, 0.42);
+    border-radius: variables.$border-radius-small;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    transition:
+      color variables.$transition-fast,
+      background-color variables.$transition-fast,
+      border-color variables.$transition-fast,
+      box-shadow variables.$transition-fast,
+      transform variables.$transition-fast,
+      opacity variables.$transition-fast;
+
+    &:hover:not(:disabled) {
+      color: #062f30;
+
+      background-color: variables.$color-secondary;
+      border-color: variables.$color-secondary;
+
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.32);
+
+      transform: translateY(-2px);
     }
 
-    &--active {
-      background: variables.$color-primary;
-      border-color: variables.$color-primary;
+    &:active:not(:disabled) {
+      transform: translateY(0) scale(0.98);
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba(142, 214, 201, 0.35);
+      outline-offset: 3px;
     }
 
     &:disabled {
-      opacity: .4;
+      color: rgba(245, 247, 255, 0.42);
+
+      background-color: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.08);
+
+      opacity: 0.65;
+
       cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
     }
+  }
+
+  &__indicator {
+    min-width: 110px;
+
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    font-weight: 400;
+
+    text-align: center;
+  }
+}
+
+.page-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.65rem;
+
+  label {
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+    font-weight: 400;
+
+    white-space: nowrap;
+  }
+
+  &__select {
+    min-width: 68px;
+    min-height: 44px;
+
+    padding: 0.65rem 2rem 0.65rem 0.8rem;
+
+    color: variables.$color-text-primary;
+    font-weight: 400;
+    text-align: center;
+
+    background-color: variables.$color-surface-light;
+    border: 1px solid rgba(142, 214, 201, 0.35);
+    border-radius: variables.$border-radius-small;
+
+    cursor: pointer;
+    outline: none;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    transition:
+      border-color variables.$transition-fast,
+      box-shadow variables.$transition-fast,
+      transform variables.$transition-fast;
+
+    &:hover:not(:disabled) {
+      border-color: variables.$color-secondary;
+
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
+      transform: translateY(-1px);
+    }
+
+    &:focus {
+      border-color: variables.$color-secondary;
+
+      box-shadow:
+        0 0 0 3px rgba(142, 214, 201, 0.16),
+        0 5px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    option {
+      color: variables.$color-text-primary;
+      background-color: variables.$color-surface;
+    }
+  }
+}
+
+/* Ajustes específicos para el tema claro */
+body.light-theme {
+  .pagination {
+    &__button {
+      color: #173330;
+
+      background-color: rgba(23, 111, 104, 0.08);
+      border-color: rgba(23, 111, 104, 0.35);
+
+      box-shadow: 0 4px 10px rgba(15, 39, 36, 0.16);
+
+      &:hover:not(:disabled) {
+        color: #ffffff;
+
+        background-color: #176f68;
+        border-color: #176f68;
+
+        box-shadow: 0 6px 12px rgba(15, 39, 36, 0.28);
+      }
+
+      &:focus-visible {
+        outline-color: rgba(23, 111, 104, 0.35);
+      }
+
+      &:disabled {
+        color: rgba(23, 51, 48, 0.42);
+
+        background-color: rgba(23, 51, 48, 0.04);
+        border-color: rgba(23, 51, 48, 0.12);
+
+        opacity: 1;
+
+        box-shadow: none;
+      }
+    }
+
+    &__indicator {
+      color: #173330;
+    }
+  }
+
+  .page-selector {
+    label {
+      color: #173330;
+    }
+
+    &__select {
+      color: variables.$color-text-primary;
+
+      background-color: variables.$color-surface-light;
+      border-color: rgba(23, 111, 104, 0.35);
+
+      box-shadow: 0 4px 10px rgba(15, 39, 36, 0.18);
+
+      &:hover:not(:disabled) {
+        border-color: #176f68;
+
+        box-shadow: 0 5px 10px rgba(15, 39, 36, 0.24);
+      }
+
+      &:focus {
+        border-color: #176f68;
+
+        box-shadow:
+          0 0 0 3px rgba(23, 111, 104, 0.16),
+          0 5px 10px rgba(15, 39, 36, 0.2);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .pagination {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 0.75rem;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 1rem 0;
+
+    &__button {
+      width: 100%;
+      min-width: 0;
+    }
+
+    &__indicator {
+      grid-column: 1 / -1;
+
+      width: 100%;
+      padding: 0.4rem 0;
+
+      order: -1;
+    }
+  }
+
+  .page-selector {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    margin-top: 0.25rem;
+
+    &__select {
+      flex: 1;
+      max-width: 110px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .pagination {
+    grid-template-columns: 1fr;
+  }
+
+  .page-selector,
+  .pagination__indicator {
+    grid-column: 1;
   }
 }
