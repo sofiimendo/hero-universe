@@ -1,50 +1,31 @@
 @use "../abstracts/variables" as variables;
 
-:root {
-  --color-background: #{variables.$color-background};
-  --color-surface: #{variables.$color-surface};
-  --color-surface-light: #{variables.$color-surface-light};
-  --color-primary: #{variables.$color-primary};
-  --color-primary-light: #{variables.$color-primary-light};
-  --color-secondary: #{variables.$color-secondary};
-
-  --color-text-primary: #{variables.$color-text-primary};
-  --color-text-secondary: #{variables.$color-text-secondary};
-
-  --color-border: #{variables.$color-border};
-  --color-shadow: #{variables.$color-shadow};
-
-  --background-decoration: rgba(108, 99, 255, 0.12);
-}
-
 body {
   background:
     radial-gradient(
       circle at top left,
-      var(--background-decoration),
+      rgba(108, 99, 255, 0.12),
       transparent 35%
     ),
-    var(--color-background);
+    variables.$color-background;
 
-  color: var(--color-text-primary);
+  color: variables.$color-text-primary;
 
   transition:
-    background-color 0.3s ease,
+    background 0.3s ease,
     color 0.3s ease;
 }
 
 body.light-theme {
-  --color-background: #f4f6ff;
-  --color-surface: #ffffff;
-  --color-surface-light: #e9ecf8;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(108, 99, 255, 0.08),
+      transparent 35%
+    ),
+    #f4f5f9;
 
-  --color-text-primary: #171a2b;
-  --color-text-secondary: #60677e;
-
-  --color-border: rgba(23, 26, 43, 0.12);
-  --color-shadow: rgba(29, 33, 53, 0.18);
-
-  --background-decoration: rgba(108, 99, 255, 0.15);
+  color: #1f2937;
 }
 
 body.modal-open {
