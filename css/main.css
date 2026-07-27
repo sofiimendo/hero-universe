@@ -56,9 +56,35 @@ select {
   font-family: inherit;
 }
 
+:root {
+  --color-background: #0d0f1a;
+  --color-surface: #151827;
+  --color-surface-light: #1d2135;
+  --color-primary: #6c63ff;
+  --color-primary-light: #8b84ff;
+  --color-secondary: #22d3ee;
+  --color-text-primary: #f5f7ff;
+  --color-text-secondary: #9da3bd;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --background-decoration: rgba(108, 99, 255, 0.12);
+}
+
 body {
-  background: radial-gradient(circle at top left, rgba(108, 99, 255, 0.12), transparent 35%), #0d0f1a;
-  color: #f5f7ff;
+  background: radial-gradient(circle at top left, var(--background-decoration), transparent 35%), var(--color-background);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+  --color-background: #f4f6ff;
+  --color-surface: #ffffff;
+  --color-surface-light: #e9ecf8;
+  --color-text-primary: #171a2b;
+  --color-text-secondary: #60677e;
+  --color-border: rgba(23, 26, 43, 0.12);
+  --color-shadow: rgba(29, 33, 53, 0.18);
+  --background-decoration: rgba(108, 99, 255, 0.15);
 }
 
 body.modal-open {
@@ -107,7 +133,8 @@ body.modal-open {
 .brand__title {
   font-size: clamp(1.25rem, 4vw, 1.75rem);
   background: linear-gradient(135deg, #8b84ff, #22d3ee);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .brand__subtitle {
@@ -291,6 +318,17 @@ body.modal-open {
   color: #f5f7ff;
   transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
+.input::-moz-placeholder, .select::-moz-placeholder {
+  color: #9da3bd;
+}
+.input::placeholder,
+.select::placeholder {
+  color: #9da3bd;
+}
+.input:hover,
+.select:hover {
+  border-color: rgba(139, 132, 255, 0.5);
+}
 .input::placeholder,
 .select::placeholder {
   color: #9da3bd;
@@ -371,7 +409,8 @@ body.modal-open {
 .hero-card__image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   transition: transform 0.3s ease;
 }
 .hero-card__overlay {
@@ -645,6 +684,4 @@ body.modal-open {
 .pagination__button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
