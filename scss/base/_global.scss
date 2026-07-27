@@ -1,15 +1,31 @@
 @use "../abstracts/variables" as variables;
 
+:root {
+  --color-background: #0d0f1a;
+  --color-surface: #151827;
+  --color-surface-light: #1d2135;
+  --color-primary: #6c63ff;
+  --color-primary-light: #8b84ff;
+  --color-secondary: #22d3ee;
+  --color-text-primary: #f5f7ff;
+  --color-text-secondary: #9da3bd;
+  --color-text: #f5f7ff;
+  --color-muted: #9da3bd;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --background-decoration: rgba(108, 99, 255, 0.12);
+}
+
 body {
   background:
     radial-gradient(
       circle at top left,
-      rgba(108, 99, 255, 0.12),
+      var(--background-decoration),
       transparent 35%
     ),
-    variables.$color-background;
+    var(--color-background);
 
-  color: variables.$color-text-primary;
+  color: var(--color-text-primary);
 
   transition:
     background 0.3s ease,
@@ -17,15 +33,19 @@ body {
 }
 
 body.light-theme {
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(108, 99, 255, 0.08),
-      transparent 35%
-    ),
-    #f4f5f9;
-
-  color: #1f2937;
+  --color-background: #f4f5f9;
+  --color-surface: #ffffff;
+  --color-surface-light: #eceef4;
+  --color-primary: #5b52e8;
+  --color-primary-light: #6c63ff;
+  --color-secondary: #0891b2;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #667085;
+  --color-text: #1f2937;
+  --color-muted: #667085;
+  --color-border: rgba(31, 41, 55, 0.12);
+  --color-shadow: rgba(31, 41, 55, 0.16);
+  --background-decoration: rgba(108, 99, 255, 0.08);
 }
 
 body.modal-open {
