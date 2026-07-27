@@ -1,3 +1,5 @@
+import { openHeroModal } from "./modal.js";
+
 const heroesGrid = document.querySelector("#heroes-grid");
 const resultsCount = document.querySelector("#results-count");
 
@@ -37,6 +39,12 @@ const createHeroCard = (hero) => {
     </div>
   `;
 
+  const detailsButton = article.querySelector(".hero-card__button");
+
+  detailsButton.addEventListener("click", () => {
+    openHeroModal(hero);
+  });
+
   return article;
 };
 
@@ -50,6 +58,7 @@ export const renderHeroes = (heroes) => {
       </p>
     `;
 
+    heroesGrid.setAttribute("aria-busy", "false");
     return;
   }
 
