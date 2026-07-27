@@ -1,6 +1,7 @@
 const heroModal = document.querySelector("#hero-modal");
 const modalBody = document.querySelector("#modal-body");
-const modalCloseButton = document.querySelector("#modal-close-button");
+const modalCloseButton = document.querySelector("#close-modal-button");
+const modalBackdrop = document.querySelector(".modal__backdrop");
 
 const getTextValue = (value, fallback = "Unknown") => {
   if (!value || value === "-") {
@@ -19,39 +20,58 @@ const getArrayValue = (values, fallback = "Unknown") => {
     (value) => value && value !== "-" && value !== "0 kg"
   );
 
-  return validValues.length > 0 ? validValues.join(" / ") : fallback;
+  return validValues.length > 0
+    ? validValues.join(" / ")
+    : fallback;
 };
 
 export const closeHeroModal = () => {
+  if (!heroModal || !modalBody) {
+    return;
+  }
+
   heroModal.classList.remove("modal--open");
   heroModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
+  heroModal.hidden = true;
 
+  document.body.classList.remove("modal-open");
   modalBody.innerHTML = "";
 };
 
 export const openHeroModal = (hero) => {
-  const fullName = getTextValue(hero.biography.fullName);
-  const publisher = getTextValue(hero.biography.publisher);
-  const alignment = getTextValue(hero.biography.alignment);
-  const gender = getTextValue(hero.appearance.gender);
-  const placeOfBirth = getTextValue(hero.biography.placeOfBirth);
-  const occupation = getTextValue(hero.work.occupation);
-  const height = getArrayValue(hero.appearance.height);
-  const weight = getArrayValue(hero.appearance.weight);
-  const heroImage = hero.images.lg || hero.images.md;
+  if (!heroModal || !modalBody) {
+    console.error("The hero modal was not found in the HTML.");
+    return;
+  }
+
+  const fullName = getTextValue(hero.biography?.fullName);
+  const publisher = getTextValue(hero.biography?.publisher);
+  const alignment = getTextValue(hero.biography?.alignment);
+  const gender = getTextValue(hero.appearance?.gender);
+  const placeOfBirth = getTextValue(hero.biography?.placeOfBirth);
+  const occupation = getTextValue(hero.work?.occupation);
+  const height = getArrayValue(hero.appearance?.height);
+  const weight = getArrayValue(hero.appearance?.weight);
+
+  const heroImage =
+    hero.images?.lg ||
+    hero.images?.md ||
+    hero.images?.sm ||
+    "";
 
   modalBody.innerHTML = `
     <div class="modal__image-container">
       <img
         src="${heroImage}"
-        alt="${hero.name}"
+        alt="Portrait of ${hero.name}"
         class="modal__image"
       />
     </div>
 
     <div class="modal__information">
-      <p class="modal__publisher">${publisher}</p>
+      <p class="modal__publisher">
+        ${publisher}
+      </p>
 
       <h2 id="modal-title" class="modal__title">
         ${hero.name}
@@ -96,23 +116,40 @@ export const openHeroModal = (hero) => {
     </div>
   `;
 
+  heroModal.hidden = false;
   heroModal.classList.add("modal--open");
   heroModal.setAttribute("aria-hidden", "false");
+
   document.body.classList.add("modal-open");
 
-  modalCloseButton.focus();
+  if (modalCloseButton) {
+    modalCloseButton.focus();
+  }
 };
 
-modalCloseButton.addEventListener("click", closeHeroModal);
+if (modalCloseButton) {
+  modalCloseButton.addEventListener("click", closeHeroModal);
+}
 
-heroModal.addEventListener("click", (event) => {
-  if (event.target === heroModal) {
-    closeHeroModal();
-  }
-});
+if (modalBackdrop) {
+  modalBackdrop.addEventListener("click", closeHeroModal);
+}
+
+if (heroModal) {
+  heroModal.addEventListener("click", (event) => {
+    if (event.target === heroModal) {
+      closeHeroModal();
+    }
+  });
+}
 
 document.addEventListener("keydown", (event) => {
-  const isModalOpen = heroModal.classList.contains("modal--open");
+  if (!heroModal) {
+    return;
+  }
+
+  const isModalOpen =
+    heroModal.classList.contains("modal--open");
 
   if (event.key === "Escape" && isModalOpen) {
     closeHeroModal();

@@ -9,8 +9,6 @@
 
   padding: 1.5rem;
 
-  background-color: rgba(0, 0, 0, 0.75);
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -25,8 +23,16 @@
     pointer-events: auto;
   }
 
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   &__content {
     position: relative;
+    z-index: 1;
 
     width: min(900px, 100%);
     max-height: 90vh;
@@ -57,7 +63,6 @@
 
     width: 2.75rem;
     height: 2.75rem;
-
     padding: 0;
 
     color: #ffffff;
@@ -69,6 +74,7 @@
     border-radius: 50%;
 
     cursor: pointer;
+
     transition:
       background-color 0.2s ease,
       transform 0.2s ease;
