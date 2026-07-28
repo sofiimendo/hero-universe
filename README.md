@@ -33,6 +33,8 @@ Hero Universe es una aplicación web interactiva desarrollada con JavaScript mod
 
 ## 📂 Estructura del proyecto
 
+``` text
+
 hero-universe/
 │
 ├── assets/
@@ -55,6 +57,7 @@ hero-universe/
 │
 ├── index.html
 └── README.md
+```
 
 ## ⚙️ Instalación
 Clonar el repositorio:
