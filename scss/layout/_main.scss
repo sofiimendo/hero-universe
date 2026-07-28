@@ -118,22 +118,19 @@
 
 .heroes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-
-  gap: 1.25rem;
-
+  grid-template-columns: 270px;
+  justify-content: center;
   align-items: stretch;
+  gap: 1.5rem;
 
   @include mixins.tablet {
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 280px);
   }
 
   @include mixins.desktop {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 280px);
   }
 }
-
 .empty-message {
   grid-column: 1 / -1;
 
