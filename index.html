@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -22,7 +23,7 @@
 
           <div>
             <h1 class="brand__title">Hero Universe</h1>
-            <p class="brand__subtitle">Superhero Explorer</p>
+            <p class="brand__subtitle">Explorador de Superhéroes</p>
           </div>
         </a>
 
@@ -40,20 +41,20 @@
 
     <main class="main-content">
       <section class="hero-intro" aria-labelledby="hero-intro-title">
-        <p class="hero-intro__eyebrow">Discover your favorite characters</p>
+        <p class="hero-intro__eyebrow">Descubrí tus personajes favoritos</p>
 
         <h2 id="hero-intro-title" class="hero-intro__title">
-          Explore the superhero universe
+          Explorá el universo de los superhéroes
         </h2>
 
         <p class="hero-intro__description">
-          Search, sort and filter heroes and villains from different publishers.
+          Buscá, ordená y filtrá héroes y villanos de distintas editoriales.
         </p>
       </section>
 
       <section class="controls" aria-label="Hero search and filters">
         <div class="search-field">
-          <label for="search-input" class="sr-only">Search heroes</label>
+          <label for="search-input" class="sr-only">Buscar héroes...</label>
 
           <span class="search-field__icon" aria-hidden="true">🔍</span>
 
@@ -61,49 +62,49 @@
             type="search"
             id="search-input"
             class="search-field__input"
-            placeholder="Search heroes..."
+            placeholder="Buscar héroes..."
             autocomplete="off"
           />
         </div>
 
         <div class="filters">
           <div class="filter-group">
-            <label for="sort-filter">Sort</label>
+            <label for="sort-filter">Ordenar</label>
 
             <select id="sort-filter" class="filter-select">
-              <option value="ascending">Name: A–Z</option>
-              <option value="descending">Name: Z–A</option>
+              <option value="ascending">Nombre: A–Z</option>
+              <option value="descending">Nombre: Z–A</option>
             </select>
           </div>
 
           <div class="filter-group">
-            <label for="gender-filter">Gender</label>
+            <label for="gender-filter">Género</label>
 
             <select id="gender-filter" class="filter-select">
-              <option value="">All genders</option>
-              <option value="Female">Female</option>
-              <option value="Male">Male</option>
-              <option value="-">Unknown</option>
+              <option value=""> Todos</option>
+              <option value="Female">Femenino</option>
+              <option value="Male">Masculino</option>
+              <option value="-"> Desconocido</option>
             </select>
           </div>
 
           <div class="filter-group">
-            <label for="alignment-filter">Alignment</label>
+            <label for="alignment-filter">Alineación</label>
 
             <select id="alignment-filter" class="filter-select">
-              <option value="">All alignments</option>
-              <option value="good">Good</option>
-              <option value="bad">Bad</option>
+              <option value="">Todas</option>
+              <option value="good">Bueno</option>
+              <option value="bad">Malo</option>
               <option value="neutral">Neutral</option>
-              <option value="-">Unknown</option>
+              <option value="-">Desconocido</option>
             </select>
           </div>
 
           <div class="filter-group">
-            <label for="publisher-filter">Publisher</label>
+            <label for="publisher-filter">Editorial</label>
 
             <select id="publisher-filter" class="filter-select">
-              <option value="">All publishers</option>
+              <option value="">Todas</option>
             </select>
           </div>
 
@@ -112,7 +113,7 @@
             id="clear-filters-button"
             class="clear-filters-button"
           >
-            Clear filters
+            Limpiar filtros
           </button>
         </div>
       </section>
@@ -120,15 +121,15 @@
       <section class="results-section" aria-labelledby="results-title">
         <div class="results-header">
           <div>
-            <p class="results-header__label">Search results</p>
+            <p class="results-header__label">Resultados</p>
 
             <h2 id="results-title" class="results-header__title">
-              Heroes and villains
+              Héroes y Villanos
             </h2>
           </div>
 
           <p id="results-count" class="results-count" aria-live="polite">
-            0 results
+            0 Resultados
           </p>
         </div>
 
@@ -140,7 +141,7 @@
         >
           <div class="loader" role="status">
             <div class="loader__spinner" aria-hidden="true"></div>
-            <p>Loading heroes...</p>
+            <p>Cargando héroes…</p>
           </div>
         </div>
       </section>
@@ -152,7 +153,7 @@
           class="pagination__button"
           aria-label="Go to first page"
         >
-          First
+           Primera
         </button>
 
         <button
@@ -161,11 +162,11 @@
           class="pagination__button"
           aria-label="Go to previous page"
         >
-          Previous
+          Anterior
         </button>
 
         <span id="page-indicator" class="pagination__indicator">
-          Page 1 of 1
+          Página 1 de 1
         </span>
 
         <button
@@ -174,7 +175,7 @@
           class="pagination__button"
           aria-label="Go to next page"
         >
-          Next
+          Siguiente
         </button>
 
         <button
@@ -183,11 +184,11 @@
           class="pagination__button"
           aria-label="Go to last page"
         >
-          Last
+          Última
         </button>
 
         <div class="page-selector">
-          <label for="page-select">Go to page</label>
+          <label for="page-select"> Ir a la página</label>
 
           <select id="page-select" class="page-selector__select">
             <option value="1">1</option>
@@ -218,7 +219,7 @@
         </button>
 
         <div id="modal-body" class="modal__body">
-          <h2 id="modal-title">Hero details</h2>
+          <h2 id="modal-title">Detalles del héroe</h2>
         </div>
       </article>
     </div>

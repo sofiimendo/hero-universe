@@ -3,30 +3,59 @@ import { openHeroModal } from "./modal.js";
 const heroesGrid = document.querySelector("#heroes-grid");
 const resultsCount = document.querySelector("#results-count");
 
+const translateAlignment = (alignment) => {
+  const translations = {
+    good: "Bueno",
+    bad: "Malo",
+    neutral: "Neutral",
+    unknown: "Desconocido",
+  };
+
+  if (!alignment) {
+    return "Desconocido";
+  }
+
+  return translations[alignment.toLowerCase()] || alignment;
+};
+
 const createHeroCard = (hero) => {
   const article = document.createElement("article");
   article.classList.add("hero-card");
 
-  const publisher = hero.biography.publisher || "Unknown publisher";
-  const alignment = hero.biography.alignment || "unknown";
+  const publisher =
+    hero.biography?.publisher || "Editorial desconocida";
+
+  const alignment = translateAlignment(
+    hero.biography?.alignment
+  );
+
+  const heroImage =
+    hero.images?.md ||
+    hero.images?.sm ||
+    hero.images?.lg ||
+    "";
 
   article.innerHTML = `
     <div class="hero-card__image-container">
       <img
-        src="${hero.images.md}"
-        alt="${hero.name}"
+        src="${heroImage}"
+        alt="Imagen de ${hero.name}"
         class="hero-card__image"
         loading="lazy"
       />
     </div>
 
     <div class="hero-card__content">
-      <p class="hero-card__publisher">${publisher}</p>
+      <p class="hero-card__publisher">
+        ${publisher}
+      </p>
 
-      <h3 class="hero-card__name">${hero.name}</h3>
+      <h3 class="hero-card__name">
+        ${hero.name}
+      </h3>
 
       <p class="hero-card__alignment">
-        Alignment: ${alignment}
+        Alineación: ${alignment}
       </p>
 
       <button
@@ -34,27 +63,38 @@ const createHeroCard = (hero) => {
         class="hero-card__button"
         data-hero-id="${hero.id}"
       >
-        View details
+        Ver detalles
       </button>
     </div>
   `;
 
-  const detailsButton = article.querySelector(".hero-card__button");
+  const detailsButton = article.querySelector(
+    ".hero-card__button"
+  );
 
-  detailsButton.addEventListener("click", () => {
-    openHeroModal(hero);
-  });
+  if (detailsButton) {
+    detailsButton.addEventListener("click", () => {
+      openHeroModal(hero);
+    });
+  }
 
   return article;
 };
 
 export const renderHeroes = (heroes) => {
+  if (!heroesGrid) {
+    console.error(
+      "No se encontró la grilla de personajes."
+    );
+    return;
+  }
+
   heroesGrid.innerHTML = "";
 
-  if (heroes.length === 0) {
+  if (!Array.isArray(heroes) || heroes.length === 0) {
     heroesGrid.innerHTML = `
       <p class="empty-message">
-        No heroes were found.
+        No se encontraron personajes.
       </p>
     `;
 
@@ -74,7 +114,13 @@ export const renderHeroes = (heroes) => {
 };
 
 export const updateResultsCount = (totalHeroes) => {
-  const resultText = totalHeroes === 1 ? "result" : "results";
+  if (!resultsCount) {
+    return;
+  }
 
-  resultsCount.textContent = `${totalHeroes} ${resultText}`;
+  const resultText =
+    totalHeroes === 1 ? "resultado" : "resultados";
+
+  resultsCount.textContent =
+    `${totalHeroes} ${resultText}`;
 };
