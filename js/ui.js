@@ -5,8 +5,8 @@ const createHeroCard = (hero) => {
   const article = document.createElement("article");
   article.classList.add("hero-card");
 
-  const publisher = hero.biography.publisher || "Unknown publisher";
-  const alignment = hero.biography.alignment || "unknown";
+  const publisher = hero.biography.publisher || "Editorial desconocida";
+  const alignment = hero.biography.alignment || "Desconocida";
 
   article.innerHTML = `
     <div class="hero-card__image-container">
@@ -24,7 +24,7 @@ const createHeroCard = (hero) => {
       <h3 class="hero-card__name">${hero.name}</h3>
 
       <p class="hero-card__alignment">
-        Alignment: ${alignment}
+        Alineación: ${alignment}
       </p>
 
       <button
@@ -32,7 +32,7 @@ const createHeroCard = (hero) => {
         class="hero-card__button"
         data-hero-id="${hero.id}"
       >
-        View details
+        Ver detalles
       </button>
     </div>
   `;
@@ -46,7 +46,7 @@ export const renderHeroes = (heroes) => {
   if (heroes.length === 0) {
     heroesGrid.innerHTML = `
       <p class="empty-message">
-        No heroes were found.
+        No se encontraron héroes.
       </p>
     `;
 
@@ -65,7 +65,7 @@ export const renderHeroes = (heroes) => {
 };
 
 export const updateResultsCount = (totalHeroes) => {
-  const resultText = totalHeroes === 1 ? "result" : "results";
+  const resultText = totalHeroes === 1 ? "resultado" : "resultados";
 
   resultsCount.textContent = `${totalHeroes} ${resultText}`;
 };

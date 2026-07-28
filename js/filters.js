@@ -65,7 +65,7 @@ export const populatePublisherFilter = (heroes) => {
   );
 
   publisherFilter.innerHTML = `
-    <option value="">All publishers</option>
+    <option value="">Todas las editoriales</option>
   `;
 
   uniquePublishers.forEach((publisher) => {

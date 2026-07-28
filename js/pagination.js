@@ -34,7 +34,7 @@ export const updatePaginationControls = (currentPage, totalPages) => {
   const hasResults = totalPages > 0;
   const displayedPage = hasResults ? currentPage : 0;
 
-  pageIndicator.textContent = `Page ${displayedPage} of ${totalPages}`;
+  pageIndicator.textContent = `Página ${displayedPage} de ${totalPages}`;
 
   firstPageButton.disabled = !hasResults || currentPage === 1;
   previousPageButton.disabled = !hasResults || currentPage === 1;

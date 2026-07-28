@@ -96,7 +96,7 @@ const initializeApp = async () => {
 
     renderCurrentPage();
   } catch (error) {
-    console.error("Unable to initialize the application:", error);
+    console.error("No se pudo iniciar la aplicación:", error);
   }
 };
 
