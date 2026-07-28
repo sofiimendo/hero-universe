@@ -1,20 +1,11 @@
 # Hero Universe ⚡
 
-Hero Universe es una aplicación web interactiva que permite explorar cientos de superhéroes y villanos mediante el consumo de una API externa. Los usuarios pueden buscar, filtrar, ordenar y visualizar información detallada de cada personaje a través de una interfaz moderna, responsive y con soporte para modo claro y oscuro.
-
----
+Hero Universe es una aplicación web interactiva desarrollada con JavaScript modular que permite explorar cientos de superhéroes y villanos consumiendo una API externa. Los usuarios pueden buscar, filtrar, ordenar y visualizar información detallada mediante una interfaz moderna, responsive y con soporte para modo claro y oscuro.
 
 ## 🚀 Demo
 
-🔗 **GitHub Pages:** *(Agregar el enlace cuando el proyecto esté publicado.)*
+🔗 **GitHub Pages:** https://sofiimendo.github.io/hero-universe/
 
----
-
-## 📸 Vista previa
-
-*(Agregar una o dos capturas del proyecto cuando esté terminado.)*
-
----
 
 ## ✨ Funcionalidades
 
@@ -29,22 +20,19 @@ Hero Universe es una aplicación web interactiva que permite explorar cientos de
 - 💾 Persistencia del tema mediante Local Storage.
 - 📱 Diseño responsive para distintos dispositivos.
 
----
 
 ## 🛠️ Tecnologías utilizadas
 
 - HTML5
 - SCSS
 - JavaScript (ES6 Modules)
-- SuperHero API (REST API)
+- Akabab Superhero API
 - Local Storage
 - Git
 - GitHub
----
 
 ## 📂 Estructura del proyecto
 
-```text
 hero-universe/
 │
 ├── assets/
@@ -57,8 +45,7 @@ hero-universe/
 │   ├── modal.js
 │   ├── pagination.js
 │   ├── theme.js
-│   ├── ui.js
-│   └── utils.js
+│   └── ui.js
 │
 ├── scss/
 │   ├── abstracts/
@@ -68,66 +55,43 @@ hero-universe/
 │
 ├── index.html
 └── README.md
-```
-
----
 
 ## ⚙️ Instalación
-
-1. Clonar el repositorio:
-
-```bash
+Clonar el repositorio:
 git clone https://github.com/sofiimendo/hero-universe.git
-```
-
-2. Ingresar a la carpeta del proyecto:
-
-```bash
+Ingresar a la carpeta del proyecto:
 cd hero-universe
-```
-
-3. Abrir el proyecto utilizando **Live Server** o cualquier servidor local.
-
----
+Abrir el proyecto utilizando Live Server o cualquier servidor local.
 
 ## 🎯 Objetivos del proyecto
 
 Este proyecto fue desarrollado como Trabajo Integrador del Módulo 3 de ADA con el objetivo de aplicar conocimientos sobre:
 
-- Consumo de APIs.
-- Manipulación del DOM.
-- JavaScript moderno (ES Modules).
-- Arquitectura modular.
-- Manejo de estados.
-- Persistencia de datos.
-- Responsive Design.
-- Trabajo colaborativo utilizando Git y GitFlow.
-
----
+Consumo de APIs.
+Manipulación del DOM.
+JavaScript moderno (ES Modules).
+Arquitectura modular.
+Manejo de estados.
+Persistencia de datos.
+Responsive Design.
+Trabajo colaborativo utilizando Git y GitFlow.
 
 ## 🌟 Características destacadas
-
-- Arquitectura modular.
-- Código organizado por responsabilidades.
-- Componentes reutilizables.
-- Consumo de API externa.
-- Persistencia del tema mediante Local Storage.
-- Interfaz responsive.
-- Diseño moderno y minimalista.
-
----
+Arquitectura modular.
+Código organizado por responsabilidades.
+Componentes reutilizables.
+Consumo de API externa.
+Persistencia del tema mediante Local Storage.
+Interfaz responsive.
+Diseño moderno y minimalista.
 
 ## 🔗 Recursos
-
-- SuperHero API: https://superheroapi.com/
+Akabab Superhero API
 
 ## 👩‍💻 Integrantes
-
-- **Sofía Mendoza**
-- **Yamila Valdez Aguilar**
-
----
+Sofía Mendoza
+Yamila Valdez Aguilar
 
 ## 📚 Proyecto académico
 
-Este proyecto fue desarrollado como **Trabajo Integrador del Módulo 3 de ADA**, con fines educativos y de aprendizaje en desarrollo web.
+Este proyecto fue desarrollado como Trabajo Integrador del Módulo 3 de ADA, con fines educativos y de aprendizaje en desarrollo web.
